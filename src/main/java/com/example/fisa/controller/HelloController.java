@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // RESTApi로 통신
-@RequestMapping("/hello")   // @WebServlet("/hello)
+@RequestMapping("/")   // @WebServlet("/hello")
 public class HelloController {
 
     @GetMapping // doGet 받아와서 overide - redirect / request.dispatcher(
@@ -12,6 +12,10 @@ public class HelloController {
         return "Hello, Spring Boot!";
     }
 
+    @GetMapping("/{id}") // PathVariable localhost:8080/atangi?test=1
+    public String sayHello(@PathVariable String id, @RequestParam(value="name", defaultValue = "Guest") String test) {
+        return "Hello, " + id + " / " + test;
+    }
 //    @PostMapping
 //    @DeleteMapping
 //    @PutMapping

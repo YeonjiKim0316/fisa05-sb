@@ -13,6 +13,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByTitleAndAuthor(String title, String author);
 
     List<Book> findByTitleOrAuthor(String title, String author);
+
+    List<Book> findByTitleContaining(String title);
+
+    List<Book> findByPageBetween(int minPage, int maxPage);
     // 기본 메서드는 구현이 되어있다.
 //    List<Book> getAllBooks(); "select * from books;"
 }

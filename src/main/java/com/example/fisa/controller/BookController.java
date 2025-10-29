@@ -68,9 +68,16 @@ public class BookController {
     }
 
     //    - 책이름으로 책을 검색하는 API(일부일치) Containing // select2?title=스프링부트
-
+    @GetMapping("/select2")
+    public List<Book> getBookByTitle(@RequestParam String title) {
+        return bookService.getBookByTitle(title);
+    }
     // 책의 최대 ~ 최소페이지로 검색하는 api
 //    {{baseURL}}/books/select3?minPage=100&maxPage=500
+    @GetMapping("/select3")
+    public List<Book> getBookByPage(@RequestParam int minPage, @RequestParam int maxPage ) {
+        return bookService.getBookByPage(minPage, maxPage);
+    }
 
     // 제목 또는 저자로 검색하는 api
     // {{baseURL}}/books/select4?title=SQL&author=코딩맨

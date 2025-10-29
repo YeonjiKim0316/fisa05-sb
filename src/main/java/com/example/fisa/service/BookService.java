@@ -5,6 +5,7 @@ import com.example.fisa.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -21,5 +22,14 @@ public class BookService {
 
     public Book saveBook(Book book) {
         return bookRepository.save(book);
+    }
+
+    // Optional<Book> -> null이 있을 때 예외처리해주는 Wrapper Class입니다. {}
+    public Optional<Book> getBookById(Long id) {
+        return bookRepository.findById(id);
+    }
+
+    public void deleteBookById(Long id) {
+        bookRepository.deleteById(id);
     }
 }

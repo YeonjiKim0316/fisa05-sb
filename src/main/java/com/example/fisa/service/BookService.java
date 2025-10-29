@@ -33,10 +33,29 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public void updateBookById2(Long id, Book book) {
+    public Book updateBookById2(Long id, Book book) {
         // 1. 전체 내용을 books 테이블에서 조회
+//        Optional<Book> existingBook = bookRepository.findById(id);
+        Book existingBook = bookRepository.findById(id).orElse(null); // 없는 책을 조회하는 경우 null을 리턴 
         // 2. 입력받은 필드가 원본 행에 있는지 확인한다
-        // -1. 원본의 값과 새로 받은 특정 필드의 값이 일치하는지 확인 후 수정
+        if (book.getTitle() != null) {
+            // 책 이름이 기존과 다르면 책 이름을 변경
+            existingBook.setTitle(book.getTitle());
+        } else if (book.getAuthor() != null) {
+            existingBook.setAuthor(book.getAuthor());
+        } else if (book.getPage() != 0) {
+            existingBook.setPage(book.getPage());
+        }
+
         // 3. 그 결과를 sevice를 통해 repo로 전달
+        return bookRepository.save(existingBook);
+    }
+
+    public List<Book> getBookByTitleAndAuthor(String title, String author) {
+        return bookRepository.findByTitleAndAuthor(title, author);
+    }
+
+    public List<Book> getBookByTitleOrAuthor(String title, String author) {
+        return bookRepository.findByTitleOrAuthor(title, author);
     }
 }

@@ -32,4 +32,11 @@ public class BookService {
     public void deleteBookById(Long id) {
         bookRepository.deleteById(id);
     }
+
+    public void updateBookById2(Long id, Book book) {
+        // 1. 전체 내용을 books 테이블에서 조회
+        // 2. 입력받은 필드가 원본 행에 있는지 확인한다
+        // -1. 원본의 값과 새로 받은 특정 필드의 값이 일치하는지 확인 후 수정
+        // 3. 그 결과를 sevice를 통해 repo로 전달
+    }
 }

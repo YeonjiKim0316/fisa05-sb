@@ -44,9 +44,21 @@ public class BookController {
     public void deleteBookById(@PathVariable Long id) {
         bookService.deleteBookById(id);
     }
+
     // 특정 책의 ID와 수정 내용 전부를 받아서 변경
+    @PutMapping("/{id}")
+    public void updateBookById(@PathVariable Long id, @RequestBody Book book) {
+        // 1. 전체 내용을 books 테이블에서 조회
+        book.setId(id);
+        // 2. 클라이언트가 준 book의 내용으로 변경사항을 모두 반영
+        // 3. 그 결과를 sevice를 통해 repo로 전달
+        bookService.saveBook(book);
+    }
 
     // 특정 책의 ID와 수정할 내용만 받아서 변경
-
+    @PatchMapping("/{id}")
+    public void updateBookById2(@PathVariable Long id, @RequestBody Book book) {
+        bookService.updateBookById2(id, book);
+    }
 
 }

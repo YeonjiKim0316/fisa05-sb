@@ -17,4 +17,6 @@ public class Book {
     String title;
     String author;
     int page;
+    String genre;
+    int price;
 }

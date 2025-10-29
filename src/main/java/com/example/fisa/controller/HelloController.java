@@ -12,10 +12,11 @@ public class HelloController {
         return "Hello, Spring Boot!";
     }
 
-    @GetMapping("/{id}") // PathVariable localhost:8080/atangi?test=1
-    public String sayHello(@PathVariable String id, @RequestParam(value="name", defaultValue = "Guest") String test) {
-        return "Hello, " + id + " / " + test;
-    }
+    // Controller / RestController를 혼용해서 쓰지는 않습니다.
+//    @GetMapping("/{id}") // PathVariable localhost:8080/atangi?test=1
+//    public String sayHello(@PathVariable String id, @RequestParam(value="name", defaultValue = "Guest") String test) {
+//        return "Hello, " + id + " / " + test;
+//    }
 //    @PostMapping
 //    @DeleteMapping
 //    @PutMapping

@@ -66,4 +66,8 @@ public class BookService {
     public List<Book> getBookByPage(int minPage, int maxPage) {
         return bookRepository.findByPageBetween(minPage, maxPage);
     }
+
+    public List<Book> getBookByTitleContainingOrAuthorContaining(String title, String author) {
+        return bookRepository.findByTitleContainingOrAuthorContaining(title, author);
+    }
 }
